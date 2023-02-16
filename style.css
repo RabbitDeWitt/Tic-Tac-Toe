@@ -1,13 +1,15 @@
 *{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: 'Itim', cursive;
 }
 
 :root{
   --bg-color: #121818;
   --restart-bg-color: #498afb;
-  --btn-color: #ff3660;
+  --btn-color: #8a001e;
+  --btn-hover-color: #ff3660;
   --playerX-color:  #09c372;
   --playerO-color:  #498afb;
   --title-color: #fff;
@@ -34,6 +36,10 @@
   margin-block: 1em;
 }
 
+.display-player.playerX::before{content: "X";}
+
+.display-player.playerO::before{content: "O";}
+
 .hide{display: none;}
 
 .container{
@@ -45,7 +51,7 @@
 }
 
 .tile{
-  border: 1px solid var(--tile-color);
+  border: 2px solid var(--tile-color);
   min-width: 100px;
   min-height: 100px;
   display: flex;
@@ -55,15 +61,43 @@
   cursor: pointer;
 }
 
+.tile:nth-child(1),
+.tile:nth-child(4),
+.tile:nth-child(7){border-left: none;}
+
+.tile:nth-child(1),
+.tile:nth-child(2),
+.tile:nth-child(3){border-top: none;}
+
+.tile:nth-child(3),
+.tile:nth-child(6),
+.tile:nth-child(9){border-right: none;}
+
+.tile:nth-child(7),
+.tile:nth-child(8),
+.tile:nth-child(9){border-bottom: none;}
+
 .playerX{color: var(--playerX-color);}
 
 .playerO{color: var(--playerO-color);}
+
+.tile:is(.playerO, .playerX)::before{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile.playerX::before{content: "X";}
+
+.tile.playerO::before{content: "O";}
 
 .controls{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1em;
+  margin-top: 50px;
 }
 
 .controls .reset{
@@ -72,11 +106,16 @@
   border-radius: 8px;
   border: none;
   font-size: 20px;
-  margin-left: 1em;
   cursor: pointer;
 }
 
 .restart{background-color: var(--restart-bg-color);}
 
-.reset{background-color: var(--btn-color);}
+.reset{
+  background-color: var(--btn-color);
+  transition: .3s ease;
+}
+
+.reset:hover{background-color: var(--btn-hover-color);}
+
 
