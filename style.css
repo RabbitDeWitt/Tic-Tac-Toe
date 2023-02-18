@@ -16,9 +16,12 @@
   --tile-color: #fff;
 }
 
-.main{
+body{
   background-color: var(--bg-color);
-  height: 100vh;
+}
+
+.main{
+  height: calc(100vh - 50px);
   padding-top: 1px;
 }
 
@@ -117,5 +120,21 @@
 }
 
 .reset:hover{background-color: var(--btn-hover-color);}
+
+footer, .link{
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  font-size: 25px;
+}
+
+
 
 
